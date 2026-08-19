@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="favicon.ico">
+<title>Cohesity Network Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div class="header">
+<img class="logo" src="CohesityLogo-Black.svg" alt="Cohesity Logo"> NETWORK TOOLS
+</div>
+<div class="topnav">
+  <div class="tablinks" onclick="showTask(event, 'Ping', 'pingHost')" id="defaultOpen" on>Ping</div>
+  <div class="tablinks" onclick="showTask(event, 'PortTest', 'Host')">Port Test</div>
+  <div class="tablinks" onclick="showTask(event, 'DNS', 'fqdn')">DNS Lookup</div>
+  <div class="tablinks" onclick="showTask(event, 'SSH', 'sshHost')">SSH</div>
+  <div class="tablinks" onclick="showTask(event, 'Traceroute', 'traceHost')">Traceroute</div>
+  <div class="tablinks" onclick="showTask(event, 'NTP', 'ntphost')">NTP</div>
+  <!-- <div class="tablicks" onclick="showTask(event, 'Netapp', 'netappctrl')">Netapp</div> -->
+
+<!-- a down the road thing. Shell.
+  <div class="tablinks" style="float: right;" onclick="showTask(event, 'shell', 'shell')">>$_</div>
+  <div class="tablinks" style="float: right;" onclick="showTask(event, 'help', 'help')">?</div>
+-->
+</div>
+
+<div id="Ping" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="pingHost" placeholder="IP Address">
+      <br><br><br>
+      <button class="buttons" type="button" onclick="goPing('pingHost')">Ping</button>
+  </p>
+</div>
+
+<div id="PortTest" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="Host" placeholder="Host">&nbsp;&nbsp;
+      <input class="inputs" style="width: 120px;" type="text" name="Portnum" placeholder="TCP Port">
+      <br><br><br>
+      <button class="buttons" type="button" onclick="goPortTest('Host', 'Portnum')">Test</button>
+  </p> 
+</div>
+
+<div id="DNS" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="fqdn" placeholder="FQDN">
+      <br><br><br>
+      <button class="buttons" type="button" onclick="goDNSTest('fqdn')">Lookup</button>
+  </p>
+</div>
+
+<div id="SSH" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="sshHost" placeholder="IP or Hostname:port*">
+      <input class="inputs" type="text" name="sshUser" placeholder="username*">
+      <input class="inputs" type="password" name="sshPass" placeholder="password"><br><br><br>
+
+<label class="container">
+  <input type="checkbox" id="keycheckbox" onclick="showPubKey()">
+  <span class="checkmark"></span>
+</label><br>
+<div style="font-size: 1.5em; color: rgb(75, 75, 75);">Key Based Authentication</div><br>
+      <textarea spellcheck="false" class="inputs sshprivatekey" type="textarea" style="display: none; border: none;" name="sshPubKey" rows="9" cols="65" disabled>
+Add this public key to the authorized_keys file on the target host
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQFrJIyKfnKHX999RqU78DIwpfc5ImgqMZr733lSKy+ukQOW5DKy/cv7q5hgWaKYEobVKCsI/N8kurD4P/g0ve4AjTsOypaMSE1lWI9lO48jmZN/GKSP8IF6E5RFsws63YbQpXEzKkhW0afO4uFwX5eXPbLwkaNpKuie4WCwEu+g638FSwBwdTy+0M0V1uws5zNJ0URA5DH9a5XIGMpc7LE5T0Y4lpR+x0+VbR/hmdd64JMScyHVRpwxXzSR4Zp8JocW/ibp0IfiI0VlhASHSFqfm279UcHdgcWQMPJzyYRNaXKfXmVo2sZ17zA/wwfG6emK1lm3ZtduH4cqVSWozj coh-net-tools@COHESITYCLUSTER
+</textarea>
+      <br><br>
+
+      <button class="buttons" type="button" onclick="goSSHTest('sshHost', 'sshUser', 'sshPass', 'keycheckbox')">Test</button>
+  </p>
+</div>
+
+
+<div id="Traceroute" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="traceHost" placeholder="IP or Hostname to trace">
+      <br><br><br>
+      <button class="buttons" type="button" onclick="goTraceHost('traceHost')">Trace</button>
+  </p>
+</div>
+
+<div id="NTP" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="ntphost" placeholder="IP or Hostname to query">
+      <br><br><br>
+      <button class="buttons" type="button" onclick="goNTPQuery('ntphost')">Query</button>
+  </p>
+</div>
+
+<div id="Netapp" class="tabcontent">
+  <p>
+      <input class="inputs" type="text" name="netappctrl" placeholder="IP or Hostname to trace">
+      <br><br><br>
+      <button class="buttons" type="button" onclick="goTraceHost('traceHost')">Trace</button>
+  </p>
+</div>
+
+<!-- Results This is populated dynamically-->
+<div id="results" class="results"></div>
+	<br><br>
+<div id="resultsControl" style="padding: 0px 100px; display: none; magin: auto; text-align: center;">
+	<button onClick="document.getElementById('results').innerHTML=''" type="button" class="buttons">Clear</button>
+	<button onClick="document.getElementById('resultsControl').style.display='none'; document.getElementById('results').style.display='none';" type="button" class="buttons">Close</button>
+</div>
+<div id="responseText" style="display: none"></div>
+
+<script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
+

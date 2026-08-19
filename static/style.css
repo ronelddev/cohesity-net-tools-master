@@ -1,0 +1,206 @@
+body {font-family: museo-sans, Roboto, Helvetica, Arial, sans-serif; src: url('MuseoSans_100_Italic-webfont.woff') format('woff');  margin: 0px;}
+
+.header {
+	background-color: white;
+	color: rgb(75, 75, 75);
+	padding: 20px 10px 20px;
+	font-size: 1.0em;
+	box-shadow: 0 0 20px 1px rgba(0,0,0,.1);
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: light-grey;
+  margin: auto;
+  text-align: center;
+}
+
+.topnav div {
+  float: left;
+  color: rgb(75, 75, 75);
+  text-align: center;
+  padding: 14px 13px 5px;
+  text-decoration: none;
+  font-size: 1.0em;
+  cursor: pointer;
+}
+/*
+.topnav div:hover {
+  background-color: #ddd;
+  color: black;
+}
+*/
+
+.topnav div.active {
+//  background-color: ##5bc500;
+//  color: white;
+    color: rgb(21, 112, 200);
+    border-bottom: 3px solid rgb(21, 112, 200);
+}
+
+.tabcontent {
+  padding: 50px 50px 20px 50px;;
+  font-size: 1em;
+  background-color: white;
+  text-align: center;
+}
+
+.inputs {
+  padding: 3px 3px;
+  width: 25%;
+  font-size: 2em;
+  text-align: center;
+  border-style: none none solid none;
+  border-width: 1px;
+  border-color: #333;
+  outline: none;
+  //transition: border-width 1s ease-out;
+}
+
+::placeholder {
+  color: rgb(75, 75, 75);
+}
+
+.inputs:focus {
+  border-color: rgb(21, 112, 200); 
+  border-width: 3px;
+}
+
+.buttons {
+   -webkit-tap-highlight-color: transparent;
+   box-sizing: border-box;
+   font: inherit;
+   vertical-align: baseline;
+   -webkit-appearance: button;
+   cursor: pointer;
+   margin: 0;
+   overflow: visible;
+   text-transform: none;
+   font-family: inherit;
+   margin-left: auto;
+   font-size: .9375rem;
+   line-height: calc(2.25rem - 2px);
+   transition: all .3s ease;
+   display: inline-block;
+   padding: 0 1.06em;
+   text-align: center;
+   white-space: nowrap;
+   background: 0 0;
+   border-radius: .25rem;
+   border: 1px solid #ebebeb;
+   font-weight: 300;
+   background-color: #1570c8;
+   border-color: transparent;
+   color: #fff;
+   margin-right: 0;
+   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+   position: relative;
+}
+
+.logo {
+  width: 140px;
+  height: 20px;
+}
+
+.results {
+  text-align: left;
+ // padding: 5px 100px;
+  height: 400px;
+  margin: auto;
+  overflow: scroll;
+  font-size: 1em;
+  font-family: "Lucida Console", monospace;
+}
+
+.row {
+    overflow-wrap: break-word;
+    padding: 5px 100px;
+}
+
+.row:nth-child(odd) {
+    background: #e0e0e0;
+}
+
+.resultTime {
+  color: gray;
+  display: inline;
+}
+
+.sshprivatekey {
+  width: auto;
+  text-align: left;
+  font-size: 1em;
+  font-family: monospace;
+}
+
+
+/* check boxes */
+/* Customize the label (the container) */
+.container {
+  /*display: block;*/
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* end check boxes*/
