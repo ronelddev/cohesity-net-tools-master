@@ -1,10 +1,11 @@
 #Goparameters
-GOCMD=/usr/local/go/bin/go
+GOCMD=go
 GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 BINARY_NAME=coh-net-tools
+export GOTOOLCHAIN=local
 
 all: test build
 build:
