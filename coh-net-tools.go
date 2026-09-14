@@ -10,7 +10,7 @@ import (
     "strings"
     "bytes"
 
-    "github.com/sparrc/go-ping"
+    "github.com/go-ping/ping"
     "github.com/aeden/traceroute"
     "github.com/beevik/ntp"
     "golang.org/x/crypto/ssh"
